@@ -1,0 +1,40 @@
+#!/usr/bin/python3
+# Copyright (c) 2015 SpaceBudokan
+# 
+# This program is free software: you can redistribute it and/or modify  
+# it under the terms of the GNU General Public License as published by  
+# the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but 
+# WITHOUT ANY WARRANTY; without even the implied warranty of 
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License 
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+
+import numpy
+pi = numpy.pi
+arcsinh = numpy.arcsinh
+
+
+N = 0.35 #focal ratio
+D = 2 #diameter in meters
+p = 16 #number of petals
+pl = 20 #number of sections to divide each petal
+
+f = N*D #focal length
+r = D/2 #radius
+
+print("Focal length:", f)
+
+for i in range(1,pl+1):
+    #print(i)
+    #print(i/pl)
+    x = (i/pl)*D
+    petlen = 0.5 * x * ((0.25 * x**2) / f**2 + 1)**0.5 + f * arcsinh((0.5 * x) / f)
+    width = (pi * 2 * x) / p
+    print("Length:", petlen)
+    print("Width: ", width)
+    print()
